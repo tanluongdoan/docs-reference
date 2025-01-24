@@ -1,0 +1,8 @@
+services:
+  app:
+    container_name: docs-reference
+    image: tanluongdoan/docs-reference:2025-01-24
+    ports:
+      - "4501:80"
+    restart: always
+
