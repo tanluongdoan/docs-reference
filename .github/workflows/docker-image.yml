@@ -1,0 +1,24 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build the Docker image
+        run: |
+          docker build . -t tanluongdoan/docs-reference:2025-01-24
+
+      - name: push image to docker hub
+        run: |
+          docker login -u tanluongdoan -p ${{ secrets.DOCKER_HUB_TOKEN }}
+          docker push tanluongdoan/docs-reference:2025-01-24
+
+
